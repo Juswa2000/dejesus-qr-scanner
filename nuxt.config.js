@@ -41,7 +41,16 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+     '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
+  auth: {
+     strategies: {
+    google: {
+      clientId: '752811676294-64lh3qvhbb78u1mufpq605qd11rs2b5o.apps.googleusercontent.com'
+    },
+  }
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
