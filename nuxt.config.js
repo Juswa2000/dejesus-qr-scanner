@@ -41,15 +41,36 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-     '@nuxtjs/axios',
+    '@nuxtjs/axios',
     '@nuxtjs/auth-next'
   ],
   auth: {
-     strategies: {
-    google: {
-      clientId: '752811676294-64lh3qvhbb78u1mufpq605qd11rs2b5o.apps.googleusercontent.com'
+    redirect:{
+      login: '/auth/signin', //redirect when user is not connected
+      logout: '/auth/signin', //redirect when user is logout
+      callback: '/auth/callback', // callback url after login
+      home: '/' // after login redirect
     },
-  }
+    autoFetchUser: false,
+     strategies: {
+     google: {
+      clientId: '752811676294-64lh3qvhbb78u1mufpq605qd11rs2b5o.apps.googleusercontent.com',
+      scheme: 'oauth2',
+      endpoints: {
+        authorization:"https://accounts.google.com/o/oauth2/auth",
+        userInfo: "https://www.googleapis.com/oauth2/v3/userinfo",
+      },
+      token:{
+        property:"access-token",
+        type:"Bearer",
+        maxAge: 1800,
+      },
+      responseType: "token id_token",
+      scope: ["openid","profile","email"],
+      redirectUri: "http://localhost:3000/auth/callback",
+      codeChallengeMethod: "",
+    },
+  },
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
