@@ -31,6 +31,7 @@ export default {
     methods: {
         signInWithGoogle() {
             this.$auth.loginWith('google')
+            console.log("Signin with google")
         }
     }
 }

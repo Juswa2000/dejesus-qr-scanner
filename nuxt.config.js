@@ -46,10 +46,10 @@ export default {
   ],
   auth: {
     redirect:{
-      login: '/auth/signin', //redirect when user is not connected
-      logout: '/auth/signin', //redirect when user is logout
-      callback: '/auth/callback', // callback url after login
-      home: '/' // after login redirect
+      login: "/auth/signin", //redirect when user is not connected
+      logout: "/auth/signin", //redirect when user is logout
+      callback: "/auth/callback", // callback url after login
+      home: "/", // after login redirect
     },
     autoFetchUser: false,
      strategies: {
@@ -61,7 +61,7 @@ export default {
         userInfo: "https://www.googleapis.com/oauth2/v3/userinfo",
       },
       token:{
-        property:"access-token",
+        property:"access_token",
         type:"Bearer",
         maxAge: 1800,
       },
